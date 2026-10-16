@@ -26,6 +26,9 @@ The sliding length is λ = √(u/k_off); the heatmap scripts set k_off = u/λ² 
 
 In each case, the results are compared with the analytical search time on chromatin-free DNA, T_free (Shvets, Kochugaeva & Kolomeisky, Molecules 23, 2106 (2018)). The ratio T_free / T_00 shows where chromatin accelerates the search (ratio > 1, green in the heatmaps) or slows it down (ratio < 1, red)
 
+
+
+
 Repository contents
 File	Description	Output
 figure3a.py : Analytical T_00 versus β for single-site opening (l = 1), for several α.	
@@ -34,6 +37,8 @@ L=1heatmap.py Heatmaps of T_free / T_00 over (α, β) for l = 1, at sliding leng
 L=lheatmap.py	Heatmaps of T_free / T_00 over (α, β) for l = L, at λ = 10, 100, 1000.	
 l=ngillespie.cpp	Gillespie simulation of the search with segment opening (l = 10) over a grid of (α, β).	
 l=ngillespie.py	Plots T_free / T_chrom from the simulation output.	
+
+
 
 
 
@@ -47,6 +52,8 @@ Python	3.6.8	Analytical calculations and plotting
 NumPy	1.19.5	Numerical calculations
 Matplotlib	3.3.4	Figures
 g++ (GCC) 8.5.0 20210514 (Red Hat 8.5.0-29)	Gillespie simulations
+
+
 
 
 Running the analysis
@@ -65,10 +72,28 @@ python3 L=lheatmap.py      # T_free / T_00 heatmaps, l = L (will create the bott
 
 Gillespie simulations for intermediate segment opening. You will need to change the koff parameter in the .cpp file and in the .py file to create a new image for each middle panel. Likewise, you may want to change the name of the .dat file for each simulation. 
 
+
+
+
+Installation
+Clone the repository:
+bash
+   git clone https://github.com/[username]/Fluctuations-in-Chromatin-Structure-Can-Accelerate-Dynamics-of-Gene-Activation.git
+   cd Fluctuations-in-Chromatin-Structure-Can-Accelerate-Dynamics-of-Gene-Activation
+Install the Python packages:
+bash
+   python3 -m pip install -r requirements.txt
+Check that a C++ compiler is available (needed only for the simulations):
+bash
+   g++ --version
+
+
+
+
 Compile and run the simulation:
 
 bash
-g++ -O2 -o l=ngillespie.cpp -o l=ngillespie
+g++ -O2 -o l=ngillespie l=ngillespie.cpp
 ./l=ngillespie
 
 
